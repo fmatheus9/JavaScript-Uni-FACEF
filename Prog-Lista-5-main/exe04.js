@@ -2,7 +2,7 @@
 //ano, aro e preço. Apos a entrada de dados o programa deve calcular e exibir ao usuário:
 //1- mádia dos preços 2-bike mais antiga, deve se considerar empates 3- quais marcas sao da marca Caloi 4- quantas bikes possuem aro 29
 
-function exe06(){
+function exe04(){
     let bikes=[]
     let marcas=["CALOI", "SCOTT", "CONONDALE"]
 

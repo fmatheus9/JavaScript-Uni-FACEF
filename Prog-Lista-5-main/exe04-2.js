@@ -1,90 +1,118 @@
-//Faça um programa em java que solicite ao usuário dados de 10 bikes. Cada bike deve conter informaçoes como marca, modelo, quadro
-//ano, aro e preço. Apos a entrada de dados o programa deve calcular e exibir ao usuário:
-//1- mádia dos preços 2-bike mais antiga, deve se considerar empates 3- quais marcas sao da marca Caloi 4- quantas bikes possuem aro 29
-
-function exe04(){
-
-    let bikes=[] // Mundo central, todas as funções ultilizam esse vetor para funcionar, a comunicação entre as funções se da pela
-    //passagem de parametros por referencia, que é o vetor.
-    let marcas=["CALOI", "SCOTT", "CONONDALE"]
-
-    criarOBJ(bikes,marcas)
-    verificarMedia(bikes);
-    verificarAno(bikes);
-    verificarMarca(bikes);
-    verificarAro(bikes);
-    verificarQuadro(bikes);
-
-    //entrada de dados
-    //coloca dentro do "()" aquilo que vamos precisar de outro escopo
-    function criarOBJ(bikes,marcas){
-        for(i=0;i<10;i++){
-            let obj={
-                marca:prompt(`Informe a marca da bike ${i+1}: `).toUpperCase(),
-                modelo:prompt(`Informe o modelo da bike ${i+1}: `),
-                quadro:Number(prompt(`Informe o quadro da bike ${i+1}: `)),
-                ano:Number(prompt(`Informe o ano da bike ${i+1}: `)),
-                aro:Number(prompt(`Informe o aro da bike ${i+1}: `)),
-                preco:Number(prompt(`Informe o preço da bike ${i+1}: `))
-            }
-            while(!marcas.includes(obj.marca)){ // ENQUANTO O VALOR DE MARCA INFORMADO NÃO SEJA VÁLIO ELE REPETE
-                obj.marca=prompt(`Informe a marca da bike ${i+1}: `)
-            }
-            bikes.push(obj) //ADICIONA OS VALORES O OBJ NO VETOR BIKES
+let entradaDados = (bikes, marcas) =>{
+    // entrada de dados
+   let bike = {
+            marca: prompt(`Informe marca da bike`).toUpperCase(),
+            modelo: prompt(`Informe modelo da bike`),
+            aro: Number(prompt(`Informe aro da bike`)),
+            quadro: Number(prompt(`Informe quadro da bike`)),
+            ano: Number(prompt(`Informe ano da bike`)),
+            preco: Number(prompt(`Informe preco da bike`))
         }
-    }
-
-    function verificarMedia(bikes){
-        //MEDIA DE PREÇOS
-        let media=0
-        for(i=0;i<10;i++){
-            media = media+bikes[0].preco
+        while (!marcas.includes(bike.marca)){
+            bike.marca = prompt(`Informe nova marca da bike`).toUpperCase()
         }
-        media=media/10
-        console.log(`Média dos preços: ${media}`)
+        bikes.push(bike)
+        alert('Bike cadastrada com sucesso')
+}
+let calcularMediaPrecos = (bikes) =>{
+    let soma = 0
+    for(let i=0;i<bikes.length;i++){
+        soma = soma + bikes[i].preco
     }
+    if (bikes.length == 0){
+        console.log(`Não há bikes cadastradas`)
+    }
+    else {
+        console.log(`Média de preço das bikes: ${soma/bikes.length}`)
+    }
+}
 
-    function verificarAno(bikes){
-        //BIKE MAIS ANTIGA
-        let objAntigo = bikes[0] //INFORMA O OBJETO DA BIKE MAIS ANTIGA E NÃO SO O ANO
-        for(i=0;i<10;i++){
-            if(bikes[i].ano<objAntigo.ano){
-                maisAntiga=bikes[i]
+let calculaBikeMaisAntiga = (bikes) =>{
+    // bikes mais antigas, considerando empate
+    if (bikes.length == 0){
+        return (`Não há bikes cadastradas`)
+    }
+    let maisAntiga = [] 
+    maisAntiga.push(bikes[0])
+    for(let i=1;i<bikes.length;i++){
+       if (bikes[i].ano < maisAntiga[0].ano){
+           maisAntiga = [] // zera o vetor
+           maisAntiga.push(bikes[i])
+       }
+       else if (bikes[i].ano == maisAntiga[0].ano){
+                maisAntiga.push(bikes[i])
             }
-        }
-        console.log(`Mais antiga: ${objAntigo}`)
     }
-    
-    function verificarMarca(bikes){
-        //QUAIS SÃO DA MARCA CALOI
-        let caloi=[]
-        for(i=0;i<10;i++){
-            if(bikes[i].marca=="CALOI"){
+    return maisAntiga
+}
+
+let calculaBikesCaloi = (bikes) =>{
+    // bikes da marca CALOI
+    if (bikes.length == 0){
+        console.log(`Não há bikes cadastradas`)
+    }
+    else {
+        let caloi = []
+        for(let i=0;i<bikes.length;i++){
+            if (bikes[i].marca == "CALOI"){
                 caloi.push(bikes[i])
             }
         }
-        console.log(`Quais são da marca CALOI: ${caloi}`)
+        console.log(caloi)
     }
-    
-    function verificarAro(bikes){
-        //QUANTAS BIKES POSSUEM ARO 29
-        let j=0
-        for(i=0;i<10;i++){
-            if(bikes[i].aro==29){
-                j++
-            }
-        }
-        console.log(`Quantas bikes possuem aro 29: ${j}`)
-    }
+}
 
-    function verificarQuadro(bikes){
-        //MAIOR QUADRO
-        let objQuadro = bike[0]
-        for(i=0;i<10;i++){
-            if(bikes[i].quadro> objQuadro.quadro){
-                objQuadro=bikes[i]
+let calculaQtde29 = (bikes) =>{
+    // quantas bikes possuem aro 29
+    if (bikes.length == 0){
+        return (`Não há bikes cadastradas`)
+    }
+    let aro29 = 0
+    for(let i=0;i<bikes.length;i++){
+        if (bikes[i].aro == 29){
+            aro29++
+        }
+    }
+    return (`Quantidade de bikes com aro 29: ${aro29}`)
+}
+let calculaBikeMaiorQuadro = (bikes) =>{
+     //  bike com maior quadro, pode-se desconsiderar empates
+    if  (bikes.length == 0){
+        console.log(`Não há bikes cadastradas`)
+    }
+    else {
+        let maiorQuadro = bikes[0]
+        for(let i=1;i<bikes.length;i++){
+            if (bikes[i].quadro > maiorQuadro.quadro){
+                maiorQuadro = bikes[i]
             }
         }
-        console.log(`Maior quadro: ${objQuadro}`)
+        console.log(maiorQuadro)
     }
+}
+let principal = () =>{
+    let bikes = []
+    let marcas = ["CALOI", "SCOTT", "CANNONDALE"]
+    let opcao // opção escolhida pelo usuário
+    do {
+        opcao = Number(prompt("Digite \n 1. Cadastra uma bike \n 2. Calcula média de preços \n 3. Calcula bikes mais antigas \n 4. Calcula bikes da marca CALOI \n 5. Calcula quantidade de bikes com aro 29 \n 6. Calcula bike com maior quadro \n 7. Finaliza"))
+        switch(opcao){
+            case 1: entradaDados(bikes, marcas) 
+                    break
+            case 2: calcularMediaPrecos(bikes)
+                    break
+            case 3: console.log(calculaBikeMaisAntiga(bikes))
+                    break
+            case 4: calculaBikesCaloi(bikes)
+                    break
+            case 5: console.log(calculaQtde29(bikes))
+                    break
+            case 6: calculaBikeMaiorQuadro(bikes)
+                    break
+            case 7: alert('Programa será finalizado')
+                    break
+            default: alert(`Opção inválida`) 
+        }
+    }
+    while (opcao != 7)
 }
