@@ -7,7 +7,7 @@ async function buscarCep(){
 
     //faz a requisição pra api
     //await é aguardar pela resposta da requisição (promise)
-    //fetch é a função que faz a requisição da pi
+    //fetch é a função que faz a requisição da api
     let resposta = await fetch(`https://viacep.com.br/ws/${cep}/json`)
 
     //dados chegam em forma de string
@@ -15,7 +15,7 @@ async function buscarCep(){
     let dados = await resposta.json()
 
     //pega o elemento que vai ser alterado
-    //recupera o logradouro
+    //recupera o logradouro e colocar no input endereço
     document.getElementById('logradouro').value = dados.logradouro
     document.getElementById('complemento').value = dados.complemento
     document.getElementById('bairro').value = dados.bairro

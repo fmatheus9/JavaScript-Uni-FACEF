@@ -53,7 +53,8 @@
                 quantidade_de_votos: 0,
                 cargo_politico: prompt("Informe o cargo: ")
             }
-            while(!partidos.some((part) => part.codigo == objPoliticos.codigo_politico)){
+            while(!partidos.some((part) => part.codigo == objPoliticos.codigo_politico ))
+            {
                 objPoliticos.codigo_politico = Number(prompt("Informe o código do partido"))
             }
             politicos.push(objPoliticos)
@@ -69,11 +70,12 @@
                 let partido_votacao = Number(prompt("Informe o codigo do partido: "))
                 let quantidade_de_votos_votacao = Number(prompt("Informe a quantidade de votos: "))
                 let achou = false
-                    if(politicos.nome_politico == nome_votacao && politicos.codigo_politico == partido_votacao){
+                for(i=0;i<politicos.length;i++){
+                    if(politicos[i].nome_politico == nome_votacao && politicos[i].codigo_politico == partido_votacao){
                         achou = true
-                        politicos.quantidade_de_votos = politicos.quantidade_de_votos + quantidade_de_votos_votacao
+                        politicos[i].quantidade_de_votos = politicos[i].quantidade_de_votos + quantidade_de_votos_votacao
                     }
-                
+                }
                 if(!achou){
                     alert("Candidato não encontrado")
                 }
@@ -85,12 +87,14 @@
             console.log("Não há politicos cadastrados.")
         }
         else{
-            let Obj_candidato_mais_votdo = politicos[0]
+            let candidato_mais_votdo = politicos[0].quantidade_de_votos
+            let partido_mais_votado = politicos[0].nome_politico
         for(i=0;i<politicos.length;i++){
-            if(politicos[i].quantidade_de_votos>Obj_candidato_mais_votdo){
-                Obj_candidato_mais_votdo = politicos[i]
+            if(politicos[i].quantidade_de_votos>candidato_mais_votdo){
+                candidato_mais_votdo = politicos[i]
+                partido_mais_votado = politicos[i]
             }
         }
-        alert(`O candidato com maior quantidade de votos foi: ${Obj_candidato_mais_votdo}`)
+        alert(`O candidato com maior quantidade de votos foi: ${partido_mais_votado} com ${candidato_mais_votdo} votos.`)
         }
     }
