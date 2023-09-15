@@ -1,0 +1,11 @@
+Programa que quando recebe uma requisição faz uma consullta em um banco de dados e devolve um resultado. VANTAGEM: SEGURANÇA
+EXEMPLO: LOGIN EM WEBSITES COM A CONTA DO GOOGLE
+DEFINIÇÃO: Uma API é criada quando uma empresa de software tem a intenção de que outros criadores de software desenvolvam produtos associados ao seu serviço
+           Através das APIs, os aplicativos podem se comunicar uns com os outros sem conhecimento ou intervenção dos usuários. 
+           Elas funcionam através da comunicação de diversos códigos, definindo comportamentos específicos de determinado objeto em uma interface. 
+JSON -> anotação (JAVASCRIPT OBJECT NOTATION) ->{
+    "chave": "valor",
+    "chave2": "valor2"
+    }
+
+

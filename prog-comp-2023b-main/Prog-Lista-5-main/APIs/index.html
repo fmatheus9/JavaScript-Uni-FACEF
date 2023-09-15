@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt=br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo APIs</title>
+    <style>
+        form{
+            border: 2px solid rgb(255, 255, 255);
+            margin: 50px auto;
+            padding: 16px;
+            width: 300px;
+            border-radius: 10px;
+            color: white;
+            background-image: url();
+            box-shadow: 2px 2px 2px #000;
+        }
+        h2{
+            text-align: center;
+            margin-top: 30px;
+            border: 2px rgb(255, 255, 255);
+            color: white;
+            text-shadow: 2px 2px 2px #000;
+        }
+        div{
+            padding: 10px;
+            display: grid;
+        }
+        body{
+            background-image: url(hacker.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+           
+        }
+        button{
+            padding: 10px;
+        }
+        button:hover{
+            background-color: #000;
+            color: white;
+            border: 1px solid white;
+        }
+    </style>
+</head>
+    <body>
+        <h2>Exemplo API: CEP</h2>
+        <form>
+            <div>
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" placeholder="Digite o CEP: ">
+            </div>
+            <div>
+                <label for="logradouro">Logradouro: </label>
+                <input readonly type="text" id="logradouro">
+            </div>
+            <div>
+                <label for="complemento">Complemento: </label>
+                <input readonly type="text" id="complemento">
+            </div>
+            <div>
+                <label for="bairro">Bairro: </label>
+                <input readonly type="text" id="bairro">
+            </div>
+            <div>
+                <label for="localidade">Localidade: </label>
+                <input readonly type="text" id="localidade">
+            </div>
+            <div>
+                <label for="uf">Uf: </label>
+                <input readonly type="text" id="uf">
+            </div>
+            <div>
+                <label for="ibge">Ibge: </label>
+                <input readonly type="text" id="ibge">
+            </div>
+            <div>
+                <label for="gia">Gia: </label>
+                <input readonly type="text" id="gia">
+            </div>
+            <div>
+                <button type="button" onclick="buscarCep()">Buscar</button>
+            </div>
+        </form>
+        <script src="api.js"></script>
+    </body>
+</html>
