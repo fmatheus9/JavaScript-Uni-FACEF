@@ -12,6 +12,5 @@ async function buscarFilme(){
         document.getElementById('Runtime').value = dados.Runtime
         document.getElementById('Director').value = dados.Director  
         document.getElementById('Poster').src = dados.Poster 
-    }
-     
+    }  
 }
