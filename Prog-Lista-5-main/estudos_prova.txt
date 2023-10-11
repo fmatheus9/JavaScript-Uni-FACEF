@@ -1,0 +1,37 @@
+- Vetor de Objetos
+- Modularização + Parâmetros 
+- Filter, Find, Some
+- APIs
+
+=======================================================================================================================================
+
+    -VALOR:
+Passar por valor: Em Passar por valor, a função é chamada passando diretamente o valor da variável como um argumento.
+Portanto, quaisquer alterações feitas dentro da função não afetam o valor original.
+Na passagem por valor, os parâmetros passados ​​como argumentos criam sua própria cópia. 
+Portanto, todas as alterações feitas dentro da função são feitas no valor copiado e não no valor original.
+
+    -REFERENCIA:
+Passagem por referência: Em passagem por referência, Function é chamada passando diretamente a referência / endereço da variável como um argumento. 
+Portanto, alterar o valor dentro da função também altera o valor original. 
+Em JavaScript array e Object segue a propriedade de passagem por referência.
+Na passagem por referência, os parâmetros passados ​​como argumentos não criam sua própria cópia, 
+mas se referem ao valor original, de modo que as alterações feitas dentro da função afetam o valor original. 
+
+    -FILTER:
+O método filter() é um recurso que permite fazer a filtragem de elementos com apenas poucas linhas de comandos. 
+Isso facilita o entendimento e a manutenção do código pelas pessoas que desenvolvem softwares.  
+Na prática, ele faz a leitura dos elementos da array em busca de um valor de referência passado por meio de uma função callback. 
+Ao fazer o teste em cada elemento, o método retorna um ou mais conteúdos que atendam à especificação indicada na função callback 
+e armazena o resultado em uma nova variável do tipo array.
+Portanto, o resultado será o de todos os elementos que satisfaçam a condição do filtro. 
+Vale ressaltar que a array original não sofre nenhum tipo de alteração pelo método filter().
+
+    -FIND:
+O método find executa a função callback uma vez para cada elemento presente no array até que encontre um onde callback retorne o valor true.
+Se o elemento é encontrado, find retorna imediatamente o valor deste elemento.
+
+    -SOME:
+O método some() testa se pelo menos algum dos elementos de um array passa no teste implementado por uma função atribuída.
+Use some() quando: é preciso testar se pelo menos 1 elemento de um array passa por um teste específico (que é uma função). 
+Em outras palavras, use some() para testar se algum elemento dentro de um array corresponde a um critério determinado.
